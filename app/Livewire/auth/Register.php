@@ -16,7 +16,7 @@ class Register extends Component
     protected $rules = [
         'name' => 'required|string|min:2|max:255',
         'email' => 'required|email|unique:users,email',
-        'password' => 'required|min:8|confirmed', // looks for password_confirmation
+        'password' => 'required|min:8|confirmed',
     ];
 
     public function register()
