@@ -7,7 +7,7 @@
         </div>
     @endif
 
-    <!-- Header -->
+   
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold">Categories</h2>
         <button wire:click="create"
