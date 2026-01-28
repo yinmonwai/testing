@@ -21,7 +21,7 @@
     <!-- Form -->
     @if($showForm)
         <div class="mb-6 bg-gray-50 p-6 rounded border border-gray-200 shadow-sm">
-            <h3 class="text-lg font-semibold mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">
                 {{ $editingProductId ? 'Edit Product' : 'Create New Product' }}
             </h3>
 
@@ -29,14 +29,14 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Name</label>
                     <input type="text" wire:model="name"
-                           class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                           class="mt-1 block w-full border border-gray-300 text-gray-800 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
                     @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Category</label>
                     <select wire:model="category_id"
-                            class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            class="mt-1 block w-full border border-gray-300 text-gray-800 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
                         <option value="">Select Category</option>
                         @foreach($categories as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -48,7 +48,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Price</label>
                     <input type="number" wire:model="price"
-                           class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                           class="mt-1 block w-full border border-gray-300 text-gray-800 rounded-md p-2 focus:ring-indigo-500 focus:border-indigo-500">
                     @error('price') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
