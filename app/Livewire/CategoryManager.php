@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\Category;
 
 
-class CategoryManger extends Component
+class CategoryManager extends Component
 {
     public $categories;
     public $name;

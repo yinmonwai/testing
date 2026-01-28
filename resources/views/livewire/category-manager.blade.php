@@ -17,35 +17,51 @@
     </div>
 
     <!-- Modal -->
+
     @if($showModal)
-        <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div class="bg-white rounded-lg w-96 p-6 shadow-lg">
-                <h3 class="text-lg font-semibold mb-4">
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" wire:click="cancel"></div>
+        
+        <div class="relative bg-amber-50 rounded-2xl w-full max-w-md p-8 shadow-2xl border border-amber-100">
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-gray-800">
                     {{ $categoryId ? 'Edit Category' : 'Create New Category' }}
                 </h3>
-
-                <form wire:submit.prevent="save" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" wire:model="name"
-                               class="mt-1 block w-full border border-gray-300 rounded-md p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        @error('name') <p class="mt-1 text-red-500 text-xs">{{ $message }}</p> @enderror
-                    </div>
-
-                    <div class="flex justify-end gap-3 mt-4">
-                        <button type="button" wire:click="cancel"
-                                class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
-                            Cancel
-                        </button>
-                        <button type="submit"
-                                class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-                            Save
-                        </button>
-                    </div>
-                </form>
             </div>
+
+            <form wire:submit.prevent="save" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-bold text-gray-800 uppercase tracking-wide mb-2">
+                        Category Name
+                    </label>
+                    
+                    <input type="text" 
+                           wire:model="name" 
+                           placeholder="Enter name..."
+                           class="block w-full border border-amber-200 bg-white rounded-xl p-3 text-gray-800 shadow-sm focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 outline-none transition-all font-medium" />
+                    
+                    @error('name') 
+                        <p class="mt-2 text-red-600 text-xs font-bold">{{ $message }}</p> 
+                    @enderror
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4">
+                    <button type="button" 
+                            wire:click="cancel"
+                            class="px-6 py-2.5 bg-transparent text-gray-800 font-bold rounded-xl hover:bg-amber-100 transition-colors">
+                        Cancel
+                    </button>
+                    
+                    <button type="submit"
+                            class="px-6 py-2.5 bg-gray-800 text-white font-bold rounded-xl hover:bg-black shadow-lg transition-all active:scale-95">
+                        {{ $categoryId ? 'Update' : 'Save' }}
+                    </button>
+                </div>
+            </form>
         </div>
-    @endif
+    </div>
+@endif
 
     <!-- Categories Table -->
     <div class="bg-white rounded shadow overflow-hidden border border-gray-200 mt-4">
@@ -59,10 +75,10 @@
             <tbody class="divide-y divide-gray-200">
                 @forelse($categories as $category)
                     <tr class="hover:bg-gray-50">
-                        <td class="p-3 text-sm text-gray-900">{{ $category->name }}</td>
+                        <td class="p-3 text-sm text-gray-800">{{ $category->name }}</td>
                         <td class="p-3 text-sm space-x-3">
                             <button wire:click="edit({{ $category->id }})"
-                                    class="text-indigo-600 hover:text-indigo-900 font-medium">
+                                    class="text-gray-800 hover:text-indigo-900 font-medium">
                                 Edit
                             </button>
                             <button wire:click="delete({{ $category->id }})"
